@@ -69,3 +69,7 @@ final class AdvicesView: UIView {
         ])
     }
 }
+
+#Preview {
+    AdvicesView()
+}
