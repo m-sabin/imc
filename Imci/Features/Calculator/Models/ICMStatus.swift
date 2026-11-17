@@ -39,16 +39,6 @@ enum IMCStatus {
         }
     }
 
-    var color: UIColor {
-        switch self {
-        case .underweight:
-            return .blue
-        case .normal:
-            return .primary
-        case .overweight:
-            return .red
-        }
-    }
     
     static func from(imc: Double) -> IMCStatus {
         
@@ -62,5 +52,18 @@ enum IMCStatus {
         default:
             return .overweight
         }
+    }
+}
+
+extension IMCStatus {
+    var displayColor: UIColor {
+            switch self {
+            case .underweight:
+                return .blue
+            case .normal:
+                return .primary
+            case .overweight:
+                return .red
+            }
     }
 }

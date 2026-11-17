@@ -38,9 +38,7 @@ final class AdvicesViewControllerTest: UIViewController {
     }
 }
 
-// A classe terminou aqui.
 
-// A extensão começa aqui.
 extension AdvicesViewControllerTest: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(

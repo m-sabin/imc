@@ -412,8 +412,6 @@ final class WeightDetailViewController: UIViewController {
     }
 
     @objc private func navigateToAdvices() {
-        print("Tentando navegar...")
-        print("NavigationController:", navigationController as Any)
         let adviceDetails = AdvicesViewController()
 
         navigationController?.pushViewController(adviceDetails, animated: true)
@@ -425,7 +423,7 @@ final class WeightDetailViewController: UIViewController {
 
         resultValue.text = String(format: "%.1f", imc)
         resultClassification.text = status.title
-        resultClassification.textColor = status.color
+        resultClassification.textColor = status.displayColor
         resultDescription.text = status.description
 
         cardResult.isHidden = false
