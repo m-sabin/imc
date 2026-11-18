@@ -82,3 +82,7 @@ final class CalculatorView: UIView {
         ])
     }
 }
+
+#Preview{
+    CalculatorView()
+}

@@ -15,7 +15,7 @@ final class WeightDetailView: UIView {
         stepper.translatesAutoresizingMaskIntoConstraints = false
         return stepper
     }()
-
+    
     let calculateButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Calcular", for: .normal)
@@ -26,7 +26,7 @@ final class WeightDetailView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     let adviceButton: UIButton = {
         let button = UIButton(type: .system)
         var configuration = UIButton.Configuration.filled()
@@ -38,7 +38,7 @@ final class WeightDetailView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Qual é seu peso?"
@@ -48,7 +48,7 @@ final class WeightDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Conhecer o seu peso nos ajuda a personalizar os treinos e a acompanhar melhor o progresso."
@@ -59,14 +59,14 @@ final class WeightDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private let weightLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private let resultCard: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +74,7 @@ final class WeightDetailView: UIView {
         view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.1)
         return view
     }()
-
+    
     private let resultTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Seu IMC:"
@@ -83,14 +83,14 @@ final class WeightDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private let resultClassificationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private let resultValueLabel: UILabel = {
         let label = UILabel()
         label.textColor = .primary
@@ -98,7 +98,7 @@ final class WeightDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private let resultDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -108,6 +108,19 @@ final class WeightDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private let disclaimerText: UILabel = {
+        let label = UILabel()
+        
+        label.text = "O IMC é apenas um indicador e não representa um diagnóstico médico. Os resultados são informativos e não substituem uma avaliação profissional."
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 8, weight: .light)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -115,6 +128,7 @@ final class WeightDetailView: UIView {
         setupConstraints()
         updateWeight(weightStepper.value)
         resultCard.isHidden = true
+        disclaimerText.isHidden = true
     }
 
     required init?(coder: NSCoder) {
@@ -143,6 +157,7 @@ final class WeightDetailView: UIView {
         resultClassificationLabel.textColor = status.displayColor
         resultDescriptionLabel.text = status.description
         resultCard.isHidden = false
+        disclaimerText.isHidden = false
     }
 
     private func setupView() {
@@ -160,6 +175,8 @@ final class WeightDetailView: UIView {
         resultCard.addSubview(adviceButton)
         resultCard.addSubview(resultValueLabel)
         resultCard.addSubview(resultDescriptionLabel)
+        
+        addSubview(disclaimerText)
     }
 
     private func setupConstraints() {
@@ -210,6 +227,14 @@ final class WeightDetailView: UIView {
                 equalTo: resultCard.trailingAnchor,
                 constant: -20
             ),
+            
+            disclaimerText.bottomAnchor.constraint(equalTo: resultCard.bottomAnchor, constant: 30),
+            
+            disclaimerText.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            disclaimerText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
+            
+            disclaimerText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35),
 
             calculateButton.widthAnchor.constraint(equalToConstant: 250),
             calculateButton.heightAnchor.constraint(equalToConstant: 42),
@@ -220,4 +245,8 @@ final class WeightDetailView: UIView {
             )
         ])
     }
+}
+
+#Preview {
+    WeightDetailView()
 }

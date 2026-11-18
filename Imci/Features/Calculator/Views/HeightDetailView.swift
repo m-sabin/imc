@@ -181,7 +181,7 @@ final class HeightDetailView: UIView {
 
             heightRangeStackView.topAnchor.constraint(
                 equalTo: heightSlider.bottomAnchor,
-                constant: 8
+                constant: -10
             ),
             heightRangeStackView.leadingAnchor.constraint(
                 equalTo: heightSlider.leadingAnchor
@@ -199,4 +199,9 @@ final class HeightDetailView: UIView {
             )
         ])
     }
+}
+
+
+#Preview{
+    HeightDetailView()
 }

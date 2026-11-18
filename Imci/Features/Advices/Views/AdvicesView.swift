@@ -12,7 +12,7 @@ final class AdvicesView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Dicas de Bem Estar"
+        label.text = "Dicas de Bem-Estar"
         label.textColor = .white
         label.font = .systemFont(ofSize: 28, weight: .bold)
         label.textAlignment = .center

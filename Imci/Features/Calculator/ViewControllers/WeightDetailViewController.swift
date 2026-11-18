@@ -22,6 +22,13 @@ final class WeightDetailViewController: UIViewController {
         super.viewDidLoad()
         setupActions()
         updateWeight()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem (
+            image: UIImage(systemName: "info.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(navigateToAdvices)
+        )
     }
 
     private func setupActions() {
@@ -61,11 +68,11 @@ final class WeightDetailViewController: UIViewController {
 
     private func showAdviceAlert() {
         let alert = UIAlertController(
-            title: "Dicas de Bem Estar?",
-            message: "Aprender mais sobre cuidado e como preservar e manter sua saúde",
+            title: "Dicas de Bem-Estar",
+            message: "Aprender mais sobre cuidado, como preservar e manter sua saúde",
             preferredStyle: .alert
         )
-
+        
         alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
         alert.addAction(
             UIAlertAction(title: "Ver Dicas", style: .default) { [weak self] _ in
@@ -76,7 +83,8 @@ final class WeightDetailViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    private func navigateToAdvices() {
+    
+    @objc private func navigateToAdvices() {
         let adviceDetails = AdvicesViewController()
         navigationController?.pushViewController(adviceDetails, animated: true)
     }
