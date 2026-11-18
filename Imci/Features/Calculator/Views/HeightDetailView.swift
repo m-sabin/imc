@@ -203,5 +203,5 @@ final class HeightDetailView: UIView {
 
 
 #Preview{
-    HeightDetailView()
+    HeightDetailViewController()
 }

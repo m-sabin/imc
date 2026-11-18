@@ -248,5 +248,5 @@ final class WeightDetailView: UIView {
 }
 
 #Preview {
-    WeightDetailView()
+    WeightDetailViewController(receiveHeight: 55)
 }
